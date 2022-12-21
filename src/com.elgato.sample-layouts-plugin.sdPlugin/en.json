@@ -1,0 +1,12 @@
+{
+	"Description": "Use layouts.", 
+	"Name": "Sample Layouts",
+	"Category": "Samples",
+	"com.elgato.sample-layouts.action": {
+		"Name": "Sample Layouts",
+		"Tooltip": "How to use layouts."
+	},
+	"Localization": {
+		"None": "None"
+	}
+}

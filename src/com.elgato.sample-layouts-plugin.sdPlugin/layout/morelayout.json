@@ -1,0 +1,53 @@
+{
+    "id": "9876",
+    "items": [
+        {
+            "key": "bar0",
+            "type": "bar",
+            "subtype": 4,
+            "border_w": 0,
+            "rect": [16, 12, 172, 12],
+            "bar_bg_c": "0:#ff0000,0.33:#a6d4ec,0.66:#f4b675,1:#00ff00",
+            "value": 25
+        },
+        {
+            "key": "title",
+            "type": "text",
+            "font": { "size": 16, "weight": 600 },
+            "rect": [16, 70, 172, 24],
+            "z-order": 5
+          },
+         {
+            "key": "redrect",
+            "type": "placcard",
+            "rect": [16, 40, 20, 20],
+            "background": "#EE3300",
+            "z-order": 2
+          },
+          {
+            "key": "yellowrect",
+            "type": "placcard",
+            "rect": [54, 40, 20, 20],
+            "background": "#FFCC00",
+            "z-order": 2
+          },
+          {
+            "key": "greenrect",
+            "type": "placcard",
+            "rect": [92, 40, 20, 20],
+            "background": "#0000FF"
+          },
+          {
+            "key": "greyrect",
+            "type": "placcard",
+            "rect": [130, 40, 20, 20],
+            "background": "#9999CC"
+          },
+          {
+            "key": "whiterect",
+            "type": "placcard",
+            "rect": [168, 40, 20, 20],
+            "background": "#FFFFFF"
+          }
+    ]
+}

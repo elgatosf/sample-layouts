@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui,viewport-fit=cover">
+    <meta name=apple-mobile-web-app-capable content=yes>
+    <meta name=apple-mobile-web-app-status-bar-style content=black>
+    <title>Property Inspector Layouts</title>
+    <link rel="stylesheet" href="../../libs/css/sdpi.css">
+</head>
+
+<body>
+    <div class="sdpi-wrapper">
+        <div class="sdpi-heading">SELECTS</div>
+
+        <div class="sdpi-item">
+            <div class="sdpi-item-label">Select</div>
+            <select id="layout" class="sdpi-item-value select">
+                <optgroup label="Built-in">
+                    <option value="$X1">Icon Layout ($X1)</option>
+                    <option value="$A0">Canvas Layout ($A0)</option>
+                    <option value="$A1">Value Layout ($A1)</option>
+                    <option value="$B1">Bar Layout ($B1)</option>
+                    <option value="$B2">GBar Layout ($B2)</option>
+                    <option value="$C1">Double Bar Layout ($C1)</option>
+                </optgroup>
+                <optgroup label="Custom Layouts">
+                    <option value="layout/layouts.json">Layout 1</option>
+                    <option value="layout/otherlayout.json">Other Layout</option>
+                    <option value="layout/morelayout.json">More Layout</option>
+                </optgroup>
+
+            </select>
+        </div>
+
+    </div>
+    <!-- libs -->
+		<script src="../../libs/js/utils.js"></script>
+		<script src="../../libs/js/constants.js"></script>
+		<script src="../../libs/js/events.js"></script>
+		<script src="../../libs/js/api.js"></script>
+        <script src="../../libs/js/property-inspector.js"></script>
+		<script src="../../libs/js/timers.js"></script>
+
+    <script>
+        console.log("Property Inspector loaded", $PI);
+        $PI.on('connected', () => {
+            const el = document.getElementById('layout');
+            console.assert(el.id, 'Layout select element not found');
+            if(!el) return;
+            console.log("Property Inspector connected", el);
+            el.onchange = () => {
+                const payload = { layout: el.value };
+                console.log("Property Inspector onChange", el.id, el.value, payload);
+
+                $PI.setSettings(payload);
+            }
+        });
+    </script>
+</body>
+
+</html>
