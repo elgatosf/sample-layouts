@@ -13,21 +13,21 @@
 // Action Cache
 const MACTIONS = {};
 const MICONS = [
-{title: 'Wave Link', url:'action/assets/Plus.svg'},
-{title: 'Voice Chat', url:'action/assets/voice_chat.svg'},
-{title: '8-ball', url:'action/assets/eight.svg'},
-{title: 'Wave Link Store', url:'action/assets/waveLink_appIcon_store.png'},
-{title: 'ControlCenter', url:'action/assets/controlcenter_pluginIcon.png'},
-{title: 'Caution', url:'action/assets/caution.svg'},
-{title: 'Analog Clock', url:'action/assets/analogclock_pluginIcon.png'},
-{title: 'Twitch', url:'action/assets/twitch_pluginIcon.png'},
-{title: 'Volume Controller', url:'action/assets/volumecontroller_pluginIcon.png'}
-]
+    {title: 'Wave Link', url: 'action/assets/Plus.svg'},
+    {title: 'Voice Chat', url: 'action/assets/voice_chat.svg'},
+    {title: '8-ball', url: 'action/assets/eight.svg'},
+    {title: 'Wave Link Store', url: 'action/assets/waveLink_appIcon_store.png'},
+    {title: 'ControlCenter', url: 'action/assets/controlcenter_pluginIcon.png'},
+    {title: 'Caution', url: 'action/assets/caution.svg'},
+    {title: 'Analog Clock', url: 'action/assets/analogclock_pluginIcon.png'},
+    {title: 'Twitch', url: 'action/assets/twitch_pluginIcon.png'},
+    {title: 'Volume Controller', url: 'action/assets/volumecontroller_pluginIcon.png'}
+];
 const MABCICONS = [
-    {title: 'A', url:'action/assets/a.svg'},
-    {title: 'B', url:'action/assets/b.svg'},
-    {title: 'C', url:'action/assets/c.svg'}
-]
+    {title: 'A', url: 'action/assets/a.svg'},
+    {title: 'B', url: 'action/assets/b.svg'},
+    {title: 'C', url: 'action/assets/c.svg'}
+];
 
 
 // Utilities
@@ -55,7 +55,7 @@ sampleLayoutsAction.onTitleParametersDidChange(({context, payload}) => {
 sampleLayoutsAction.onDidReceiveSettings(({context, payload}) => {
     console.log('onDidReceiveSettings', payload.settings.layout);
     MACTIONS[context].settings = payload.settings;
-    const pl = { layout: payload.settings.layout };
+    const pl = {layout: payload.settings.layout};
     $SD.send(context, 'setFeedbackLayout', {payload: pl});
     // {
     //     event: "setFeedbackLayout",
@@ -100,7 +100,7 @@ class SampleAction {
         this.update(payload);
     }
 
-    dialRotate(payload, inTitle='Dial rotating') {
+    dialRotate(payload, inTitle = 'Dial rotating') {
         this.manualValue = cycle(this.manualValue + payload?.ticks, 0, 100);
         $SD.setFeedback(this.context, {
             title: `${inTitle} : ${this.manualValue}`,
@@ -120,7 +120,7 @@ class SampleAction {
     // GBar Layout ($B2)
     // Double Bar Layout ($C1)
 
-    update(payload, useManualValue=false) {
+    update(payload, useManualValue = false) {
         const layout = payload?.settings?.layout;
         if(!layout) return;
         this.manualValue = useManualValue ? this.manualValue : parseInt(Math.random() * 100);
@@ -137,8 +137,8 @@ class SampleAction {
                 break;
             case '$A0':
                 $SD.setFeedback(this.context, {
-                    "full-canvas": this.makeIcon(200,100),
-                    canvas: this.makeIcon(136,24)
+                    "full-canvas": this.makeIcon(200, 100),
+                    canvas: this.makeIcon(136, 24)
                 });
                 break;
             case '$A1':
@@ -150,8 +150,8 @@ class SampleAction {
             case '$B1':
                 $SD.setFeedback(this.context, {
                     title: MICONS[iconNum].title,
-                    value: iconNum+1,
-                    indicator: Math.ceil(iconNum/(MICONS.length-1)*100),
+                    value: iconNum + 1,
+                    indicator: Math.ceil(iconNum / (MICONS.length - 1) * 100),
                     icon: MICONS[iconNum].url
                 });
                 break;
@@ -165,7 +165,7 @@ class SampleAction {
             case '$C1':
                 $SD.setFeedback(this.context, {
                     indicator1: num,
-                    indicator2: 100-num,
+                    indicator2: 100 - num,
                     icon1: MICONS[iconNum].url,
                     icon2: MABCICONS[num % MABCICONS.length].url
                 });
@@ -173,9 +173,9 @@ class SampleAction {
         }
     }
 
-    makeIcon(w,h) {
+    makeIcon(w, h) {
         const color = randomColor();
-        const svg =  `
+        const svg = `
         <svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
            <rect x="0" y="0" width="${w}" height="${h}" fill="${color}" />
         </svg>`;
@@ -185,4 +185,75 @@ class SampleAction {
 };
 
 
+
+
+
+const test =
+{
+    "id": "com.elgato.sample-layouts.action.layout",
+    "items": [
+        {
+            "key": "title",
+            "type": "text",
+            "font": {"size": 16, "weight": 600},
+            "rect": [16, 4, 132, 24],
+            "alignment": "left",
+            "z-order": 5
+        },
+        {
+            "key": "redrect",
+            "type": "placcard",
+            "rect": [172, 10, 20, 20],
+            "background": "#FF3300",
+            "z-order": 2
+        },
+        {
+            "key": "yellowrect",
+            "type": "placcard",
+            "rect": [172, 40, 20, 20],
+            "background": "#FFDD00",
+            "z-order": 2
+        },
+        {
+            "key": "greenrect",
+            "type": "placcard",
+            "rect": [172, 70, 20, 20],
+            "background": "#33BB00"
+        },
+        {
+            "key": "midrect",
+            "type": "pixmap",
+            "rect": [152, 10, 12, 80],
+            "background": "#AAAAAA",
+            "z-order": 3
+        },
+        {
+            "key": "bar0",
+            "type": "gbar",
+            "subtype": 4,
+            "rect": [16, 32, 100, 20],
+            "bar_h": 12,
+            "border_w": 0,
+            "z-order": 3
+        },
+        {
+            "key": "bar1",
+            "type": "gbar",
+            "subtype": 4,
+            "rect": [16, 54, 100, 20],
+            "bar_h": 12,
+            "border_w": 0,
+            "bar_bg_c": "0:#ff0000,0.33:#a6d4ec,0.66:#f4b675,1:#00ff00"
+        },
+        {
+            "key": "bar2",
+            "type": "bar",
+            "subtype": 4,
+            "border_w": 0,
+            "rect": [16, 76, 100, 12],
+            "value": 55
+        }
+
+    ]
+}
 
