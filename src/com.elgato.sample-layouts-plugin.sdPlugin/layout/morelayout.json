@@ -15,21 +15,21 @@
             "type": "text",
             "font": { "size": 16, "weight": 600 },
             "rect": [16, 70, 172, 24],
-            "z-order": 5
+            "zOrder": 5
           },
          {
             "key": "redrect",
             "type": "placcard",
             "rect": [16, 40, 20, 20],
             "background": "#EE3300",
-            "z-order": 2
+            "zOrder": 2
           },
           {
             "key": "yellowrect",
             "type": "placcard",
             "rect": [54, 40, 20, 20],
             "background": "#FFCC00",
-            "z-order": 2
+            "zOrder": 2
           },
           {
             "key": "greenrect",
