@@ -11,33 +11,33 @@
           },
          {
             "key": "redrect",
-            "type": "placcard",
+            "type": "pixmap",
             "rect": [16, 40, 20, 20],
             "background": "#EE3300",
             "zOrder": 2
           },
           {
             "key": "yellowrect",
-            "type": "placcard",
+            "type": "pixmap",
             "rect": [54, 40, 20, 20],
             "background": "#FFCC00",
             "zOrder": 2
           },
           {
             "key": "greenrect",
-            "type": "placcard",
+            "type": "pixmap",
             "rect": [92, 40, 20, 20],
             "background": "#0000FF"
           },
           {
             "key": "greyrect",
-            "type": "placcard",
+            "type": "pixmap",
             "rect": [130, 40, 20, 20],
             "background": "#9999CC"
           },
           {
             "key": "whiterect",
-            "type": "placcard",
+            "type": "pixmap",
             "rect": [168, 40, 20, 20],
             "background": "#FFFFFF"
           },
