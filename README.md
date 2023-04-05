@@ -12,5 +12,4 @@ This SDK-example shows how to use:
 
 ## Changes:
 ### 0.1.0.05
-- removed type `placcard` from [customlayout.json](src/com.elgato.sample-customlayout-plugin.sdPlugin/layout/customlayout.json)
-- changed property `z-order` to `zOrder` in [customlayout.json](src/com.elgato.sample-customlayout-plugin.
+- removed type `placcard` and changed property `z-order` to `zOrder` in `/layouts/*.json` json files.
