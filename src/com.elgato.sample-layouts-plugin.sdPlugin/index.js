@@ -70,14 +70,6 @@ sampleLayoutsAction.onDidReceiveSettings(({context, payload}) => {
     MACTIONS[context].update(payload);
 });
 
-
-sampleLayoutsAction.onDialPress(({context, payload}) => {
-    // console.log('dial was pressed', context, payload);
-    if(payload.pressed === false) {
-
-    }
-});
-
 sampleLayoutsAction.onDialRotate(({context, payload}) => {
     // console.log('dial was rotated', context, payload.ticks);
     if(payload.hasOwnProperty('ticks')) {
@@ -91,6 +83,25 @@ sampleLayoutsAction.onTouchTap(({context, payload}) => {
         MACTIONS[context].touchTap();
     }
 });
+
+$SD.onConnected(jsn => {
+    const [version, major] = jsn.appInfo.application.version.split(".").map(e => parseInt(e, 10));
+    const hasDialPress = version == 6 && major < 4;
+    if(hasDialPress) {
+        sampleLayoutsAction.onDialPress(({context, payload}) => {
+            console.log('dial was pressed', context, payload);
+            if(payload.pressed === false) {
+                // nothing
+            }
+        });
+        
+    } else {
+        sampleLayoutsAction.onDialUp(({ context, payload }) => {
+            console.log('onDialUp', context, payload);
+        });
+    }
+});
+
 
 class SampleAction {
     constructor (context, payload) {
